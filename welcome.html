@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to HTML Editor</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #4a6fa5, #6a93cb);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #2c3e50, #4a6fa5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    
+    .tagline {
+      color: #7f8c8d;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    .content {
+      margin-bottom: 30px;
+    }
+    
+    .content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .feature-list {
+      background-color: #f8f9fa;
+      border-left: 4px solid #4a6fa5;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .feature-list h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-list h3::before {
+      content: '✦';
+      color: #4a6fa5;
+      font-size: 1.5rem;
+    }
+    
+    .feature-list ul {
+      list-style-type: none;
+      padding-left: 5px;
+    }
+    
+    .feature-list li {
+      padding: 8px 0;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #27ae60;
+      font-weight: bold;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background-color: #4a6fa5;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #3a5a80;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+    }
+    
+    .btn-secondary {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #d5dbdd;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-icon {
+      font-size: 1.2rem;
+    }
+    
+    .file-types {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .file-type {
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      width: 150px;
+      background-color: #f8f9fa;
+      transition: transform 0.3s ease;
+    }
+    
+    .file-type:hover {
+      transform: translateY(-5px);
+      background-color: #edf2f7;
+    }
+    
+    .file-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .html-icon { color: #e34c26; }
+    .css-icon { color: #264de4; }
+    .js-icon { color: #f0db4f; }
+    
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin: 10px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .file-type {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Welcome to Your HTML Editor</h1>
+      <p class="tagline">A modern environment for web development</p>
+    </header>
+    
+    <main class="content">
+      <p>This is an enhanced example web page with modern styling and improved user interface.</p>
+      
+      <div class="feature-list">
+        <h3>Page Features</h3>
+        <ul>
+          <li>Fully responsive design that works on all devices</li>
+          <li>Modern CSS with gradients and shadows</li>
+          <li>Interactive elements with hover effects</li>
+          <li>Clean, readable typography</li>
+          <li>Organized file type information</li>
+        </ul>
+      </div>
+      
+      <p>To see and edit this page's HTML markup, click the <strong>Edit</strong> button at the top of the screen. You can open HTML, CSS, and JavaScript files using the file manager.</p>
+      
+      <p>To create new files, use the menu at the top left of the screen. This editor supports all standard web development file types.</p>
+      
+      <div class="file-types">
+        <div class="file-type">
+          <span class="file-icon html-icon">&#60;/&#62;</span>
+          <strong>HTML Files</strong>
+          <p>Structure your web content</p>
+        </div>
+        <div class="file-type">
+          <span class="file-icon css-icon">CSS</span>
+          <strong>CSS Files</strong>
+          <p>Style your web pages</p>
+        </div>
+        <div class="file-type">
+          <span class="file-icon js-icon">JS</span>
+          <strong>JavaScript Files</strong>
+          <p>Add interactivity</p>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="btn btn-primary">
+          <span class="btn-icon">✏️</span> Edit This Page
+        </button>
+        <button class="btn btn-secondary">
+          <span class="btn-icon">📁</span> Open File Manager
+        </button>
+        <button class="btn btn-secondary">
+          <span class="btn-icon">➕</span> Create New File
+        </button>
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <p>Built with HTML5 and CSS3 • Refresh the page to see original version</p>
+    </footer>
+  </div>
+  
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      const editBtn = document.querySelector('.btn-primary');
+      const fileManagerBtn = document.querySelectorAll('.btn-secondary')[0];
+      const newFileBtn = document.querySelectorAll('.btn-secondary')[1];
+      
+      editBtn.addEventListener('click', function() {
+        alert('Edit button clicked! In a real editor, this would open the HTML source code.');
+      });
+      
+      fileManagerBtn.addEventListener('click', function() {
+        alert('File manager button clicked! This would open the file browser.');
+      });
+      
+      newFileBtn.addEventListener('click', function() {
+        alert('New file button clicked! This would open a dialog to create a new file.');
+      });
+      
+      
+      const header = document.querySelector('h1');
+      header.style.opacity = '0';
+      header.style.transform = 'translateY(-20px)';
+      
+      setTimeout(() => {
+        header.style.transition = 'opacity 1s ease, transform 1s ease';
+        header.style.opacity = '1';
+        header.style.transform = 'translateY(0)';
+      }, 300);
+    });
+  </script>
+</body>
+</html>
